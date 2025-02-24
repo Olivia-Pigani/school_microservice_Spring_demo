@@ -25,6 +25,16 @@ services:
       - 5050:${PGADMIN_PORT}
     restart: unless-stopped
 
+  zipkin:
+    container_name: zipkin
+    image: ghcr.io/openzipkin/zipkin-slim
+    ports:
+      - "9411:9411"
+    networks:
+      - zipkin
+
 volumes:
   postgres:
   pgadmin:
+networks:
+  zipkin:
